@@ -6,7 +6,7 @@ var fs = require( 'fs' );
 var path = require( 'path' );
 
 function rmdir( filePath ) {
-	if ( fs.existsSync( filePath ) ) {
+	if (fs.existsSync(filePath) && fs.lstatSync(filePath).isDirectory()) {
 		fs.readdirSync( filePath ).forEach( function( file ) {
 			var curPath = filePath + '/' + file;
 
